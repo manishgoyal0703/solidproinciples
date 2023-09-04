@@ -1,4 +1,4 @@
-package com.solidprinciples.solidprinciples;
+package com.solidprinciples;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

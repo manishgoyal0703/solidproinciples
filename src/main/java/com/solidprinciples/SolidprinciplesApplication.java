@@ -1,4 +1,4 @@
-package com.solidprinciples.solidprinciples;
+package com.solidprinciples;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
