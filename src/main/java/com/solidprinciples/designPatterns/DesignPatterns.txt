@@ -1,0 +1,31 @@
+Design patterns: 
+
+	Creational: Patterns deal with the process of creation of the objects of classes.
+		1. Builder
+		2. Simple factory
+		3. Factory method
+		4. Prototype
+		5. Singleton
+		6. Abstract factory
+		7. Object pool
+	Structural: Patterns deal with how classes and objects are arranged and composed.
+	Behavioural: Patterns describe how classes and objects interact and communicate with each other.
+	
+	
+	
+1. Builder : we have a complex process to construct an object involving multiple steps, then builder design pattern can help us.
+			In Builder we remove the logic related to object construction from "client" code & abstract it in separate class.
+			
+			Role: 
+				Builder: provide interface for creating parts of the product.
+				ConcreteBuilder: Construct parts & assembles final product. Keeps track of product it creates.
+				Director: Uses builder to construct object. knows the steps & their sequence to build product.
+				Product: Final complex object that we want to create.
+			
+			Ex: Constructing a Immutable class where we don't know the sequence of parameter needs to be passed.
+				Constructing a user class where we need to construct the address class first.
+				
+				
+				
+				
+	
