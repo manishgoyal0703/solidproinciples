@@ -46,10 +46,41 @@ Design patterns:
 					pitfalls: you need to start from beginning. It's not easy to refactor existing code into factory method pattern.
 					More complex to implement. 
 					
-4. 	Prototype : 
+4. 	Prototype : When we have a complex object that is costly to create. To create more instances os such class, 
+				we use an existing instance as our prototype. 
+				Prototype will allow us to make copies of existing object & save us from having to re-create objects from scratch.
+				Abstract prototype : declares a method for cloning itself.
+				
+				While using Cloneable pleas give attention to the shallow/deep copy of the references. Immutable fields on clones save the 
+				trouble of deep copy. 
+				Shallow copy will have all the calues of cloned object and in deep copy it will reset it to the initial ones.
+				
+				Make sure to reset the mutable state of the object before returning the prototype. It's a good idea to implement 
+				this in method to allow subclasses to initialize themselves.
+				
+				Clone method is protected in Object class and must be overridden to be public to be callable from outside the class.
+				
+				Clonable is a marker interface, an indication that the class support cloning.
+				
+				Prototypes are useful when working with Composite and Decorator patterns.
+				Ex: Object.clone()
 					
-					
-					
+		Pitfalls: 
+				Sublclasses may not be able to support clone so the code becomes complicated as you have to code for situations where 
+				an implementation may not support clone.
+				If large number of mutable obejct states are there then it is complicated.
+				
+				
+				
+5. Abstract Factory: Abstract Factory patterns work around a super-factory which creates other factories.
+						The Abstract Factory design pattern is a creational pattern that provides an interface for creating families 
+						of related objects without specifying their concrete classes. It allows clients to create objects without 
+						knowledge of their specific implementations, promoting flexibility and loose coupling in the code.
+						Ex: xml.parsers.DocumentBuilderFactory		
+
+
+6. Singleton : Only once instance per application or accessible globally through a single point.						
+										
 
 
 				
