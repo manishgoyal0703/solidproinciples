@@ -1,0 +1,99 @@
+Design patterns: 
+
+	Creational: Patterns deal with the process of creation of the objects of classes.
+		1. Builder
+		2. Simple factory
+		3. Factory method
+		4. Prototype
+		5. Singleton
+		6. Abstract factory
+		7. Object pool
+	Structural: Patterns deal with how classes and objects are arranged and composed.
+	Behavioural: Patterns describe how classes and objects interact and communicate with each other.
+	
+	
+	
+1. Builder : we have a complex process to construct an object involving multiple steps, then builder design pattern can help us.
+			In Builder we remove the logic related to object construction from "client" code & abstract it in separate class.
+			
+			Role: 
+				Builder: provide interface for creating parts of the product.
+				ConcreteBuilder: Construct parts & assembles final product. Keeps track of product it creates.
+				Director: Uses builder to construct object. knows the steps & their sequence to build product.
+				Product: Final complex object that we want to create.
+			
+			Ex: Constructing a Immutable class where we don't know the sequence of parameter needs to be passed.
+				Constructing a user class where we need to construct the address class first.
+				Real life Example: StringBuilder, Calender.builder
+				
+				
+				
+2. Simple factory: Here we simply move the instantiation logic to a separate class and most commonly to a static method of this class.
+					It's simply a method that encapsulates object instantiation.
+					Ex: if(pudding) provide pudding object else if(cake) provide cake object.
+					Real life Example: java.text.NumberFormat class has getInstance method
+					
+					Pitfalls: Start with simple factory then evolve into factory method design pattern.
+					
+					
+3. Factory method: Most versatile design pattern, when we want to move the object creation logic from our code to a separate class.
+					We use this pattern when we do not know in advance which class we may need to instantiate beforehand 
+					& also to allow new classes to be added to system and handle their creation without affecting client code.
+					We let subclasses decide which object to instantiate by overriding the factory method.
+					Ex:template method and abstract factory makes use of factory method design pattern. java.util.collection has an 
+					abstract method called iterator().
+					
+					pitfalls: you need to start from beginning. It's not easy to refactor existing code into factory method pattern.
+					More complex to implement. 
+					
+4. 	Prototype : When we have a complex object that is costly to create. To create more instances os such class, 
+				we use an existing instance as our prototype. 
+				Prototype will allow us to make copies of existing object & save us from having to re-create objects from scratch.
+				Abstract prototype : declares a method for cloning itself.
+				
+				While using Cloneable pleas give attention to the shallow/deep copy of the references. Immutable fields on clones save the 
+				trouble of deep copy. 
+				Shallow copy will have all the calues of cloned object and in deep copy it will reset it to the initial ones.
+				
+				Make sure to reset the mutable state of the object before returning the prototype. It's a good idea to implement 
+				this in method to allow subclasses to initialize themselves.
+				
+				Clone method is protected in Object class and must be overridden to be public to be callable from outside the class.
+				
+				Clonable is a marker interface, an indication that the class support cloning.
+				
+				Prototypes are useful when working with Composite and Decorator patterns.
+				Ex: Object.clone()
+					
+		Pitfalls: 
+				Sublclasses may not be able to support clone so the code becomes complicated as you have to code for situations where 
+				an implementation may not support clone.
+				If large number of mutable obejct states are there then it is complicated.
+				
+				
+				
+5. Abstract Factory: Abstract Factory patterns work around a super-factory which creates other factories.
+						The Abstract Factory design pattern is a creational pattern that provides an interface for creating families 
+						of related objects without specifying their concrete classes. It allows clients to create objects without 
+						knowledge of their specific implementations, promoting flexibility and loose coupling in the code.
+						Ex: xml.parsers.DocumentBuilderFactory		
+
+
+6. Singleton : Only once instance per application or accessible globally through a single point.
+				Volatile forces value read/write from main memory instead of cache.
+				Ex: Java.lang.Runtime
+				
+				
+7. Object pool : In our system if cost of creating an instance of a class is high and we need a large number of 
+                 objects of this class for short duration, then we can use object pool.
+				 
+				 Implementation: 
+					1. A thread safe caching of objects should be done in pool. 
+					2. Methods to acquire and release objects should be provided & pool reset cached objects before giving them out.
+				
+
+
+				
+				
+				
+	

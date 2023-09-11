@@ -1,0 +1,28 @@
+
+
+1. Single Responsibility Principle: There should never be more than one reason for a class to change 
+	Ex: Jason -> Xml, Authentication change, Http (protocol)-> Https
+
+2. Open closed principle: Software entities (Classes, Modules, Methods etc.) should be open for extension but closed for I modification.
+	Ex: Base class -> Drived class (can derive from base and override methods) for extesion
+	We should not go and modify in the base class (base class is closed for modification ).
+
+
+3. Liscov Substitution principle: We should be substitute base class objects with child class objects and this should 
+not alter behaviour/characteristics of program.
+	Ex: Square is a rectangle. to implement so that behavious can not be altered we can implement Shape interface.
+
+
+4. Interface Segregation principle: Client should not be forced to depend upon interfaces that they do not use.
+	Interface pollution: Large interfaces, Unrelated methods.
+	Signs of interface pollution :
+	a. classes have empty mrthod implementations
+	b. Method implementations throw UnsupportedOperationException (or similar).
+	c. Method implementations return null or default/dummy values.
+	Ex: UserService will have findbyname but orderservice will not have findbyname. After implementing the persistance layer so we need to remove findbyname from persistance layer.
+
+
+5. Dependency Inversion Principle:
+	A. High level modules should not depend on low level modules. Both should depend upon abstractions.
+	B. Abstractions should not depend upon details. Details should depend upon abstractions.
+	Ex: loosly coupled
