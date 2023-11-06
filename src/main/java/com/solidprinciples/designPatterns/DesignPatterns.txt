@@ -8,7 +8,16 @@ Design patterns:
 		5. Singleton
 		6. Abstract factory
 		7. Object pool
+		
 	Structural: Patterns deal with how classes and objects are arranged and composed.
+		8. Adapter
+		9. Bridge
+		10. Decorator
+		11. Composite
+		12. Facade
+		13. Flyweight
+		14. Proxy
+	
 	Behavioural: Patterns describe how classes and objects interact and communicate with each other.
 	
 	
@@ -90,9 +99,18 @@ Design patterns:
 				 Implementation: 
 					1. A thread safe caching of objects should be done in pool. 
 					2. Methods to acquire and release objects should be provided & pool reset cached objects before giving them out.
+				Ex: org.apache.commons.dbcp.BasicDataSource
 				
 
-
+8. Adapter: we have an existing object which provides the functionality which client needs. But client code can't 
+			use this object because it expects an object with different interface.
+			
+			Using adapter design pattern we make this existing object work with client by adapting the object to client's 
+			expected interface.
+			This pattern is also called as wrapper as it "wraps" existing object.
+			
+			
+			
 				
 				
 				
