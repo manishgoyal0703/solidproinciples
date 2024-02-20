@@ -19,6 +19,18 @@ Design patterns:
 		14. Proxy
 	
 	Behavioural: Patterns describe how classes and objects interact and communicate with each other.
+		15. Chain of Responsibility
+		16. Command
+		17. Interpreter
+		18. Mediator
+		19. Iterator
+		20. Memento
+		21. Observer
+		22. State
+		23. Strategy
+		24. Template Method
+		25. Visitor
+		26. Null Object
 	
 	
 	
@@ -108,6 +120,114 @@ Design patterns:
 			Using adapter design pattern we make this existing object work with client by adapting the object to client's 
 			expected interface.
 			This pattern is also called as wrapper as it "wraps" existing object.
+			
+			Implementation: 
+				1. How much work the adaptor does depends upon the differences between target interface and object being adapted. 
+					If method arguments are same or similar adaptor has very less work to do.
+				2. Using class adaptor "allows" you to override some of the adaptee's behaviour. but this has to be avoided as you 
+					end up with adapter that behaves differently than adaptee. Fixing defect is not easy anymore!
+				3. Using Object adapter allows you to potentially change the adaptee object to one of it's subclasses.
+				
+				Design considerations: 
+					In java a "class adapter" may not be possible if both the target and adaptee are concrete classes. In such cases the 
+					object adater is the only solution.
+				Example : InputStreamReader and OutputStreamReader classes are examples of Object adapters.
+				
+				
+9. Bridge: Our implementations and abstractions are generally coupled to each other in normal inheritance. Using bridge pattern
+			we can decouple them so they can both change without affecting each other.
+			
+			Implementation: 
+			1. We can achieve this by creating two separate inheritance hierarchies; one for implementation and another for abstraction.
+			2. we use composition to bridge these two hierarchies.
+			
+			3. In case we are ever going to have a single implementation then we can skip creating abstract implementor.
+			4. Abstraction can decide on it's own which concrete implementor to use in it's constructor or we can delegate that decision to a third
+			class. In last approach abstraction remains unaware of concrete implementors & provided greater de-coupling.
+			Benefits: you can change the abstraction without changing implementation.
+			Ex: DriverManager -> getConnection(), (mysql.jdbc.Driver -> connect(), oracle -> connect()).
+				Collections.newSetFromMap()
+			
+			
+10. Decorator:  When we want to enhance behaviour of our existing object dynamically as and when required then we can use decorator design pattern.
+				Decorator wraps an object within itself and provides same interface as the wrapped object. So the client of original object
+				doesn't need to change.
+				A decorator provides alternative to subclassing for extending functionality of existing classes.
+				Decorator can be abstrract as well. Depends on the the subclasses functionality.
+				
+				Considerations: 
+				Decorators support recursive composition, and so this pattern lends itself to creation of lots of small objects that add
+				"just a little bit" functionality. Code using these objects becomes difficult to debug.
+				Ex: BufferedOutputStream class decorates the outputStream object and adds buffering to file writing operation. This improves
+				the disk I/O performance by reducing number of writes.
+
+11. Composite: We have a part-whole relationship or hierarchy of objects and we want to be able to treat all objects in this hierarchy uniformly.
+				It's the functional enhancement of the composite concept from oops.
+				
+				If leaf objects can be repeated in the hierarchy then shared leaf nodes be used to save memory and initialization costs.
+				But again the number the number of nodes is major factor as using cache for small total number of nodes may cost more.
+				
+				
+12. Facade: 1. Client has to interact with lasrge number of interfaces and classes in a subsystem to get result. So client gets tightly coupled 
+			with those interfaces and classes. facade solves this problem.
+			2. Facade provides a simple and unified interface to a subsystem. Client interacts with just the facade now to get the result.
+			3. Facade is a great solution to simplify dependencies. It allows you to have a weak coupling between subsystems.
+			4. If your only concern is coupling of client code to subsystem specific classes and not worried about simplification provided by facade, then you can use abstract factory pattern in place of facade.
+			
+			Implementation: 
+				1. We start by creating a class that will serve as a facade.
+				2. We determine the overall use cases/ tasks that the subsystem is used for.
+				3. We write a method that exposes each use case/task.
+				4. This method takes care of working with different classes of subsystem.
+				
+			Considerations:
+				1. A Facade should minimize the complexity of subsystem and provide usable interface.
+				2. You can have an interface or abstract class for Facade or client can use different subclasses to talk to different subsystem implementations.
+				
+			Ex: Java.net.URL -> openStream() method.			
+			
+13. Flyweight: 	1. Our system needs a large number of a particular class & maintaining these instances is a performance concern.
+				2. Flyweight allows us to share an Object in multiple contexts. But instead of sharing entire object, which may not be feasible,
+				we divide object into two parts: intrinsic(state that is shared in every context) & extrinsic(context specific state) state. we create objects with only intrinsic state and share them in multiple contexts.
+				3. Client or user of object provides the extrinsic state to object to carry out it's functionality.
+				4. We provide a factory so client can get required flyweight objects based on some key to identify flyweight.
+				
+				Considerations:
+				1. A factory is necessary with flyweight dp as client code needs easy way to get hold of shared flyweight. Also number of shared instances can be large so a central place is good strategy to keep track all of them.
+				2. Flyweight's intrinsic state should be immutable for successful use of flyweight dp.
+				3. Some other dp like state or strategy can make best use of fyweight dp.
+			
+			Example : Integer, Short, Byte -> valueOf() merthod is serve as factory method.
+			
+				Pitfalls: Runtime cost may be added for maintaing the extrinsic state. Client code has to either maintain it or compute it every time
+				it needs to use flyweight.
+				
+14. Proxy:  what is proxy ? 
+			-> We need to provide a placeholder or surrogate to another object.
+			-> Proxy acts on behalf of the object. types: Protection, Remote, Virtual proxy.
+			
+			Implementation: 
+			1. Proxy must implement same interface as the real subject.
+			2. We can either create actual object later when required or ask for the one in constructor.
+			3. In method implementations of proxy we implement proxy's functionality before delegating to real object.
+			
+			Ex: Hibernate uses a proxy to load collections of value types.
+			
+15. Chain of Responsibility: 
+				
+				
+				
+				
+				
+				
+				
+			
+			
+			
+			
+				
+				
+			
 			
 			
 			
